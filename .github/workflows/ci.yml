@@ -24,12 +24,12 @@ jobs:
       # scan the freshly built image with Trivy. Fail the job on CRITICAL.
       - name: Scan image with Trivy
         uses: aquasecurity/trivy-action@0.35.0
-      with:
-        scan-type: image
-        image-ref: ${{ env.IMAGE_NAME }}:${{ github.sha }}
-        severity: CRITICAL
-        exit-code: '1'
-        ignore-unfixed: true
+        with:
+          scan-type: image
+          image-ref: ${{ env.IMAGE_NAME }}:${{ github.sha }}
+          severity: CRITICAL
+          exit-code: '1'
+          ignore-unfixed: true
 
       # log in to Docker Hub using DOCKERHUB_USERNAME and DOCKERHUB_TOKEN secrets.
       - name: Log in to Docker Hub
